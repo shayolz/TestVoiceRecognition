@@ -1,0 +1,42 @@
+﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+@{
+    ViewBag.Title = "Voice recognition";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p>
+<button onclick="ascolta()"> ascolta</button>
+
+<button onclick="parla()"> parla</button>
+<script>
+    var parla = function () {
+        alert("parla!");
+
+        $.ajax({
+            url: "/Home/TTS",
+            context: document.body
+        }).done(function () {
+            alert("done2");
+        }).fail(function () {
+            alert("fail2");
+        });
+
+    }
+
+    var ascolta = function () {
+        alert("parla!");
+
+        $.ajax({
+            url: "/Home/CallAsync",
+            context: document.body
+        }).done(function () {
+            alert("done2");
+        }).fail(function () {
+            alert("fail2");
+        });
+
+    }
+
+</script>
